@@ -24,7 +24,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="ID" Grid.Column="0" FontAttributes="Bold" />
+                    <Label Text="Ranking #" Grid.Column="0" FontAttributes="Bold" />
                     <Label Text="Productnaam" Grid.Column="1" FontAttributes="Bold" />
                     <Label Text="Aantal verkocht" Grid.Column="2" FontAttributes="Bold" />
                 </Grid>
@@ -37,7 +37,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="{Binding ProductId}" Grid.Column="0"/>
+                        <Label Text="{Binding Ranking}" Grid.Column="0"/>
                         <Label Text="{Binding ProductName}" Grid.Column="1"/>
                         <Label Text="{Binding TotalSold}" Grid.Column="2"/>
                     </Grid>

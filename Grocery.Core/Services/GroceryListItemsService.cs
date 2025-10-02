@@ -51,26 +51,32 @@ namespace Grocery.Core.Services
 
         public List<BestSellingProducts> GetBestSellingProducts(int topX = 5)
         {
-            var items = _groceriesRepository.GetAll();
+            var groceryItems = _groceriesRepository.GetAll();
 
-            var result = items
-                .GroupBy(i => i.ProductId)
-                .Select((g, index) =>
+            var bestSellingProducts = groceryItems
+                .GroupBy(groceryItem => groceryItem.ProductId)
+                .Select(productGroup =>
                 {
-                    var product = _productRepository.Get(g.Key);
+                    var product = _productRepository.Get(productGroup.Key);
+
                     return new BestSellingProducts(
-                        g.Key,
+                        productGroup.Key,
                         product?.Name ?? "Onbekend",
                         product?.Stock ?? 0,
-                        g.Count(),
-                        index + 1
+                        productGroup.Count(),
+                        0
                     );
                 })
-                .OrderByDescending(b => b.NrOfSells)
+                .OrderByDescending(bestSeller => bestSeller.NrOfSells)
                 .Take(topX)
+                .Select((bestSeller, index) =>
+                {
+                    bestSeller.Ranking = index + 1;
+                    return bestSeller;
+                })
                 .ToList();
 
-            return result;
+            return bestSellingProducts;
         }
 
         private void FillService(List<GroceryListItem> groceryListItems)
