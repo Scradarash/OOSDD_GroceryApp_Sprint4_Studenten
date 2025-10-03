@@ -72,7 +72,8 @@
                         <Label Text="Geen klanten hebben dit product gekocht"
                                FontSize="18"
                                FontAttributes="Bold"
-                               HorizontalTextAlignment="Center"/>
+                               HorizontalTextAlignment="Center"
+                               Margin="0,40,0,0"/>
                     </ContentView>
                 </CollectionView.EmptyView>
             </CollectionView>
