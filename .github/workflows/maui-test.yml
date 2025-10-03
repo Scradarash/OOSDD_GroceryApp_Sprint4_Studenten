@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - main
-      - Development
+      - development
+      - Release
   pull_request:
     branches:
       - main
-      - Development
+      - development
+      - Release
  
 jobs:
   test:
